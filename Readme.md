@@ -1,4 +1,4 @@
-Beaver and Steve Downloader
+XKCD Downloader
 =========
 
 Purpose....
