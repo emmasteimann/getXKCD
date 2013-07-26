@@ -36,12 +36,12 @@ class GetXKCD
       puts "Downloading comic address: #{comic_url}"
 
       next_link = page.link_with(:text => "Next >")
-      if next_link
-        next_page = @agent.click(next_link)
-        puts @agent.current_page().uri()
-      else  
+      if next_link.href.include? "#"
         zip_previous_chapter(current_chapter)
         keep_going = false
+      else
+        next_page = @agent.click(next_link)
+        puts @agent.current_page().uri()
       end
       page_cursor = page_cursor + 1
     end
