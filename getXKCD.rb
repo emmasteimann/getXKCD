@@ -13,6 +13,12 @@ class GetXKCD
   end
 
   def start_download
+    if File.directory?("xkcd_comics")
+      FileUtils.rm_rf("xkcd_comics")
+    end
+    if File.directory?("saved_comics")
+      FileUtils.rm_rf("saved_comics")
+    end
     # Start with first page of first Chapter
     base_url = "http://xkcd.com"
     page = @agent.get("#{base_url}/1/")
